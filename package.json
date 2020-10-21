@@ -1,0 +1,20 @@
+{
+  "name": "bybirdie",
+  "version": "0.0.1",
+  "description": "express app for bird watching",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.5",
+    "debug": "~4.2.0",
+    "dotenv": "^8.2.0",
+    "express": "~4.17.1",
+    "express-handlebars": "^5.1.0",
+    "handlebars": "^4.7.6",
+    "http-errors": "~1.8.0",
+    "mongodb": "^3.6.2",
+    "morgan": "~1.10.0"
+  }
+}
