@@ -1,11 +1,17 @@
 var createError = require('http-errors');
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const exphbs = require('express-handlebars');
-require('custom-env').env()
-const MongoClient = require('mongodb').MongoClient
+const request = require('request');
+var browserify = require('browserify')
+
+const PORT = process.env.PORT;
+
+
+const MongoClient = require('mongodb').MongoClient;
 
 
 var indexRouter = require('./routes/index');
@@ -49,8 +55,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, () => {
-  console.log('The web server has started on port 3000');
+/*
+app.listen(PORT, () => {
+  console.log(`The web server has started on port ${PORT}`);
 });
+*/
 
 module.exports = app;
