@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'aotw/styles.css' %}"> 
+    <title>{% block title %} ByBirdie {% endblock %} </title> 
+</head>
+<body>
+  {% block body %}
+  {% endblock %}
+  <script src="{% static 'bb/app.js' %}"></script>
+</body>
