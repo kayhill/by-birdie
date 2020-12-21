@@ -6,12 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="{% static 'aotw/styles.css' %}"> 
+    <link rel="stylesheet" href="{% static 'bb/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'bb/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'bb/styles.css' %}"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
     <title>{% block title %} ByBirdie {% endblock %} </title> 
 </head>
 <body>
-  {% block body %}
-  {% endblock %}
+  <header>
+    <div class="navBar" id="mainNavBar">
+      <img class="logo" src="{% static 'bb/media/bybirdie_logo.png' %}" alt="ByBirdie Logo">
+      <span class="brand">By Birdie</span>
+      <a href="">Home</a>
+      <a href="">My Birdies</a>      
+      <a href="">About</a>
+      <a href="javascript:void(0);" class="icon" onClick="openDrawerMenu()">&#9776;</a>
+    </div>
+  </header>
+  <main> 
+    <div class="container">
+      {% block body %}
+      {% endblock %}
+    </div>
+  </main>
+  <footer>
+
+  </footer>
   <script src="{% static 'bb/app.js' %}"></script>
 </body>
