@@ -16,11 +16,12 @@
 <body>
   <header>
     <div class="navBar" id="mainNavBar">
-      <img class="logo" src="{% static 'bb/media/bybirdie_logo.png' %}" alt="ByBirdie Logo">
-      <span class="brand">By Birdie</span>
-      <a href="">Home</a>
-      <a href="">My Birdies</a>      
-      <a href="">About</a>
+      <a href="{% url 'home' %}">
+        <img class="logo" src="{% static 'bb/media/bybirdie_logo.png' %}" alt="ByBirdie Logo">
+        <span class="brand">By Birdie</span></a>
+      <a class="menu-item" href="">Home</a>
+      <a class="menu-item" href="">My Birdies</a>      
+      <a class="menu-item" href="">About</a>
       <a href="javascript:void(0);" class="icon" onClick="openDrawerMenu()">&#9776;</a>
     </div>
   </header>

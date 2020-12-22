@@ -4,8 +4,13 @@
 
 {% block body %}
 <h2>Grab those binnoculars..</h2>
-<form>
+
+
+<form id="currloc" action="{% url 'index' %}" method="POST">
+  {% csrf_token %}
   <input type="button" class="button button-primary" onclick="getLocation();" value="Get Location"/>
+  <input type="hidden" name="lon" id="currlon" value="0"/>
+  <input type="hidden" name="lat" id="currlat" value="0"/>
 </form>
 
 

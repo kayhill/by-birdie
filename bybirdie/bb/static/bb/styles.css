@@ -5,7 +5,7 @@
 
 .navBar .logo {
   float: left;
-  max-width: 50px;
+  max-width: 45px;
   padding: 5px 10px;
 }
 
@@ -17,9 +17,7 @@
   font-size: 30px;
 }
 
-/*Floats each item to the left with padding of 14 & 16 px.
-Removes the underline with text decoration = none.*/
-.navBar a{
+.navBar .menu-item, .navBar .icon {
   float: right;
   color: white;
   padding: 14px 16px;
@@ -27,21 +25,19 @@ Removes the underline with text decoration = none.*/
   font-size: 17px;
 }
 
-/*Background color change during hover state*/
-.navBar a:hover{
+.navBar .menu-item:hover{
   background-color: white;
   color: #009cde;
 }
 
-/*Hides the menu Icon which will show when the nav needs to be responsive*/
+
 .navBar .icon{
   display: none;
 }
 
-/*Set your custom screen width here replacing 700*/
-@media (max-width: 700px){
-/*Ignores the first link (which is Home) in the div and       applies 'display = none' to everything else.   Basically hiding everything but Home*/
-  .navBar a {
+
+@media (max-width: 800px){
+  .navBar .menu-item {
     display: none;
   }
 /*Brings the menu icon into view and floats it to the right*/
@@ -50,7 +46,6 @@ Removes the underline with text decoration = none.*/
     float: right;
   }
   
-/*The navBar class will be changed to 'navBar responsive' using JS. This chunk of CSS makes the menu icon stay where it is by making the position absolute within it's parent 'right top corner'. Without this, the icon will get kicked around when the items are collapsed and expanded*/
   .navBar.responsive {
     position: relative;
   }
@@ -60,10 +55,20 @@ Removes the underline with text decoration = none.*/
     top: 0;
   }
   
-/*Removes the originally set float and brings them to view*/
   .navBar.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
+
+  .navBar.responsive .logo, .navBar.responsive .brand {
+    display: none;
+  }
+}
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
 }

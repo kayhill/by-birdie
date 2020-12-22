@@ -1,0 +1,15 @@
+{% extends "bb/layout.html" %}
+{% load static %}
+{% block title %} ByBirdie {% endblock %}
+
+{% block body %}
+<p>Lat: {{ lat }} & Long: {{ lon }}</p>
+<div id="map"></div>
+
+
+<script src="{% static 'bb/location.js' %}"></script>
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key={{googleAPI}}&callback=initMap">
+</script>
+{% endblock %}
+
