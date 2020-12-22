@@ -1,5 +1,5 @@
 {% extends "bb/layout.html" %}
-
+{% load static %}
 {% block title %} ByBirdie {% endblock %}
 
 {% block body %}
@@ -8,10 +8,21 @@
 
 <form id="currloc" action="{% url 'index' %}" method="POST">
   {% csrf_token %}
-  <input type="button" class="button button-primary" onclick="getLocation();" value="Get Location"/>
+  <input type="button" class="button button-primary" id="loc-change-btn" value="Update My Location"/>
   <input type="hidden" name="lon" id="currlon" value="0"/>
   <input type="hidden" name="lat" id="currlat" value="0"/>
 </form>
+
+<div id="map"></div>
+<div id="hslist"></div>
+
+
+<script src="{% static 'bb/storage.js' %}"></script>
+<script src="{% static 'bb/hotspots.js' %}"></script>
+<script src="{% static 'bb/uiHotspots.js' %}"></script>
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key={{googleAPI}}&callback=initMap">
+</script>
 
 
 {% endblock %}

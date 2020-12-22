@@ -1,15 +1,46 @@
 
+const storage = new Storage();
+
+const userLocation = storage.getLocationData();
+
+const hotspotNearMe = new HotspotInfo(userLocation.latitude, userLocation.longitude);
+
+const ui = new UI;
+
+const changeBtn = document.getElementById('loc-change-btn');
+
+const dropMenuBtn = document.getElementById('drawerMenu');
+
+//Event Listeners
+document.addEventListener('DOMContentLoaded', getHotspots);
+changeBtn.addEventListener('click', updateLocation);
+dropMenuBtn.addEventListener('click', openDrawerMenu);
+
+function getHotspots() {
+  hotspotNearMe.getHotspots()
+        .then(results => {
+            //ui.displayHotspotMap(results);
+            ui.displayHotspotList(results);
+        })
+        .catch(err => console.log(err))
+  hotspotNearMe.initMap();
+}
+
 function saveLocation(position) {
-  var latitude = position.coords.latitude;
-  var longitude = position.coords.longitude;
+  let newLatitude = parseFloat(position.coords.latitude);
+  let newLongitude = parseFloat(position.coords.longitude);
 
   // Store user location in local storage
-  localStorage.setItem('latitude', latitude);
-  localStorage.setItem('longitude', longitude);
+  storage.setLocationData(newLatitude, newLongitude);
+
+  // Get updated hotspots
+  hotspotNearMe.changeLocation(newLatitude, newLongitude);
+  
+  getHotspots();
 
   // Pass location to backend
-  document.getElementById("currlon").value = longitude;
-  document.getElementById("currlat").value = latitude;
+  document.getElementById("currlon").value = newLongitude;
+  document.getElementById("currlat").value = newLatitude;
   document.getElementById("currloc").submit();
 }
 
@@ -21,7 +52,7 @@ function errorHandler(err) {
   }
 }			
   
-function getLocation() {
+function updateLocation() {
   if(navigator.geolocation) {               
   // timeout at 60000 milliseconds (60 seconds)
     var options = {timeout:60000};
@@ -31,6 +62,8 @@ function getLocation() {
   }
 }
   
+
+// UI functions
 function openDrawerMenu(){
   var x = document.getElementById("mainNavBar");
   if (x.className === "navBar"){
@@ -39,4 +72,3 @@ function openDrawerMenu(){
     x.className = "navBar";
   }
 }
-
