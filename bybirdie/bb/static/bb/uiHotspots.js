@@ -7,8 +7,16 @@ class UI {
   }
   
   displayHotspotList(hotspots) {
-    console.log(hotspots.hotspotData[0].locName)
+    let data = hotspots.hotspotData;    
+    
+    for (var i = 0; i < data.length; i++) {      
+      let name = data[i].locName;
+      
+      let li = document.createElement("li");
+      li.innerHTML = `${name}`    
 
+      this.hotspotList.appendChild(li);
+    }
      
   }
 

@@ -15,6 +15,7 @@ class HotspotInfo {
       
 
     const hotspotData = await hotspotResponse.json();
+    // console log for testing
     console.log(hotspotData);
   
     return {
