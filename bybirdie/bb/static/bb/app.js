@@ -3,7 +3,7 @@ const storage = new Storage();
 
 const userLocation = storage.getLocationData();
 
-const hotspotNearMe = new HotspotInfo(userLocation.latitude, userLocation.longitude);
+const myLocation = new Location(userLocation.latitude, userLocation.longitude);
 
 const ui = new UI;
 
@@ -11,19 +11,30 @@ const changeBtn = document.getElementById('loc-change-btn');
 
 const dropMenuBtn = document.getElementById('drawerMenu');
 
+const ebirdAPIkey = document.getElementById('ebirdAPI').value;
+
+
 //Event Listeners
-document.addEventListener('DOMContentLoaded', getHotspots);
+document.addEventListener('DOMContentLoaded', getLocationData);
 changeBtn.addEventListener('click', updateLocation);
 dropMenuBtn.addEventListener('click', openDrawerMenu);
 
-function getHotspots() {
-  hotspotNearMe.getHotspots()
+function getLocationData() {
+
+  myLocation.getNotables(ebirdAPIkey)
         .then(results => {
-            //ui.displayHotspotMap(results);
-            ui.displayHotspotList(results);
+          ui.displayNotablesList(results);
         })
         .catch(err => console.log(err))
-  hotspotNearMe.initMap();
+
+  myLocation.getHotspots()
+        .then(results => {
+          //ui.displayHotspotMap(results);
+          ui.displayHotspotList(results);
+        })
+        .catch(err => console.log(err))
+  
+  myLocation.initMap();
 }
 
 function saveLocation(position) {
@@ -33,10 +44,11 @@ function saveLocation(position) {
   // Store user location in local storage
   storage.setLocationData(newLatitude, newLongitude);
 
-  // Get updated hotspots
-  hotspotNearMe.changeLocation(newLatitude, newLongitude);
+  // Update location for outgoing 
+  myLocation.changeLocation(newLatitude, newLongitude);
   
-  getHotspots();
+  // 
+  getLocationData();
 
   // Pass location to backend
   document.getElementById("currlon").value = newLongitude;

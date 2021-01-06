@@ -6,6 +6,7 @@ import os
 # Create your views here.
 def index(request):
     googleAPI = os.environ.get('GOOGLE_MAPS_API_KEY')
+    ebirdAPI = os.environ.get('EBIRD_API_TOKEN')
     
     #
     #if request.method == 'POST':
@@ -13,5 +14,6 @@ def index(request):
      #   lon = request.POST['lon']
         
     return render(request, 'bb/index.html', {
-        "googleAPI": googleAPI
+        "googleAPI": googleAPI,
+        "ebirdAPI": ebirdAPI
     })

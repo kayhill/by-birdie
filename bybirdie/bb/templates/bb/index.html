@@ -4,7 +4,7 @@
 
 {% block body %}
 <br>
-<h2>Grab those binnoculars..</h2>
+<h2>Grab Your Binoculars</h2>
 
 
 <form id="currloc" action="{% url 'index' %}" method="POST">
@@ -17,7 +17,12 @@
 <div id="map"></div>
 <div id="hslist">
   <br>
-  <h3>Popular Birding Spots Near You</h3>
+  <h3>Popular Birding Hubs Near You</h3>
+</div>
+<div id="notablelist">
+  <br>
+  <h3>Notable Sightings Near You </h3>
+  <input id="ebirdAPI" value="{{ebirdAPI}}" type="hidden" />
 </div>
 
 
@@ -27,7 +32,6 @@
 <script defer
     src="https://maps.googleapis.com/maps/api/js?key={{googleAPI}}&callback=initMap">
 </script>
-
 
 {% endblock %}
 
